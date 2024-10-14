@@ -12,6 +12,18 @@ def calcMultiplesByWhileLoop():
             
     return multiples
 
+def calcMultiplesByForLoop(multiplier, maxValue):
+    multiples = []
+    
+    for x in range(maxValue):
+        y = x * multiplier
+        if y < maxValue:
+            multiples.append(y)
+        else:
+            return multiples
+
+
 print(calcMultiplesByWhileLoop())
+print(calcMultiplesByForLoop(7, 100))
 
 print('end') 
