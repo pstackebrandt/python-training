@@ -22,19 +22,20 @@ def calcMultiplesByForLoop(multiplier, maxValue):
         else:
             return multiples
 
-def calcMultiplesByForLoopWithSteps(multiplier, maxValue):
+def calcMultiplesByForLoopWithSteps(multiplier, maxValue, minValue):
     multiples = []
     
-    for x in range(0, maxValue, multiplier):
+    for x in range(minValue, maxValue, multiplier):
             multiples.append(x)
 
     return multiples
 
 
+print('Result of:')
+print('Multiplication by while loop         : %s' % calcMultiplesByWhileLoop())
+resultOfFirstForLoop = calcMultiplesByForLoop(7, 100)
+print(f'Multiplication by for loop           : {resultOfFirstForLoop}')
+print('Multiplication by for loop with steps: {}'.format(calcMultiplesByForLoopWithSteps(7, 100, 0)))
+print('Multiplication by for loop with steps: {}'.format(calcMultiplesByForLoopWithSteps(7, 92, 14)))
 
-print(calcMultiplesByWhileLoop())
-print(calcMultiplesByForLoop(7, 100))
-print(calcMultiplesByForLoopWithSteps(7, 100))
-
-
-print('end') 
+print('End of script') 
