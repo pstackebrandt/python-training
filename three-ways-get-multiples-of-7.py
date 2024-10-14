@@ -22,8 +22,19 @@ def calcMultiplesByForLoop(multiplier, maxValue):
         else:
             return multiples
 
+def calcMultiplesByForLoopWithSteps(multiplier, maxValue):
+    multiples = []
+    
+    for x in range(0, maxValue, multiplier):
+            multiples.append(x)
+
+    return multiples
+
+
 
 print(calcMultiplesByWhileLoop())
 print(calcMultiplesByForLoop(7, 100))
+print(calcMultiplesByForLoopWithSteps(7, 100))
+
 
 print('end') 
