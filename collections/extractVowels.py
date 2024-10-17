@@ -1,4 +1,5 @@
-# extract vowels from a string
+# Task: Extract vowels from a string
+# Script contains different versions 
 
 WORDS = 'Hello, World!'
 ALL_VOWELS = ['a', 'e', 'i', 'o', 'u']
