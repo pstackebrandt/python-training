@@ -10,20 +10,34 @@
 
 # Tasks:
 
-def calFacBySimpleLoop(start, end):
+import math
+
+def calcFacBySimpleLoop(start, end):
     y = start
     for x in range(start + 1, end + 1):
         y *=x
+        
     return y
+
+def calcFacUsingMathProd(start, end):
+    return math.prod(x for x in range(start, end + 1))
+    
+
 
 start = 1
 end = 20
-facBySimpleLoop = calFacBySimpleLoop(start, end)
+facBySimpleLoop = calcFacBySimpleLoop(start, end)
 
 print(f'Faculty from {start} to {end}: {facBySimpleLoop} (Simple loop)')
     
 start = 1
 end = 3
-facBySimpleLoop = calFacBySimpleLoop(start, end)
+facBySimpleLoop = calcFacBySimpleLoop(start, end)
 
 print(f'Faculty from {start} to {end}: {facBySimpleLoop} (Simple loop)')
+
+start = 1
+end = 20
+facByMathProd = calcFacUsingMathProd(start, end)
+
+print(f'Faculty from {start} to {end}: {facByMathProd} (using math.prod())')
