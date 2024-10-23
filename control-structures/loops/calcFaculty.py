@@ -11,6 +11,7 @@
 # Tasks:
 
 import math
+from functools import reduce
 
 def calcFacBySimpleLoop(start, end):
     y = start
@@ -22,7 +23,9 @@ def calcFacBySimpleLoop(start, end):
 def calcFacUsingMathProd(start, end):
     return math.prod(x for x in range(start, end + 1))
     
-
+def calcFacUsingGeneratorExpression(start, end):
+    factors = [x for x in range(start + 1, end + 1)]
+    return reduce(lambda x, y : x * y, factors, 1)
 
 start = 1
 end = 20
@@ -41,3 +44,9 @@ end = 20
 facByMathProd = calcFacUsingMathProd(start, end)
 
 print(f'Faculty from {start} to {end}: {facByMathProd} (using math.prod())')
+
+start = 1
+end = 20
+facByGenExpr = calcFacUsingGeneratorExpression(start, end)
+
+print(f'Faculty from {start} to {end}: {facByGenExpr} (using generator expression)')
