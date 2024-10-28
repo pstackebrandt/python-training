@@ -31,10 +31,6 @@ def calcStepSize(min_val, max_val, expected_rounds = MIN_ROUNDS):
     # we have only 1 step (range). So we will have 1 step (range) fewer than borders/rounds. 
     
     return Fraction(val_range, steps_between_borders) # Fraction preserves dividend and divisor 
-   
-def testTheWest():
-    print("Test successful")
-    return "Test successful"
     
 def main():
     stepSize = calcStepSize(MIN_VALUE, MAX_VALUE, ROUNDS)

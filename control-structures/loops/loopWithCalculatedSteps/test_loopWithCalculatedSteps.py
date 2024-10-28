@@ -7,14 +7,9 @@ from fractions import Fraction
 import unittest
 import math
 
-#import loopWithCalculatedSteps as lwcs
 from loopWithCalculatedSteps import calcStepSize
-from loopWithCalculatedSteps import testTheWest
 
 class TestLoopWithCalculatedSteps(unittest.TestCase):
-    def test_connection(self):
-        self.assertEqual(testTheWest(), "Test successful")
-
     def test_calc_with_start_and_end_but_no_additional_rounds__starting_with_zero(self):
         self.assertEqual(calcStepSize(0, 10, 2), 10)
 
@@ -30,8 +25,6 @@ class TestLoopWithCalculatedSteps(unittest.TestCase):
     def test_calc_with_2additional_rounds(self):
         actual = calcStepSize(125, 160, 11)
         self.assertAlmostEqual(actual, 3.5, places=4)
-        
-  
 
 # Der Test-Runner, der die Tests ausführt 
 if __name__ == '__main__':
