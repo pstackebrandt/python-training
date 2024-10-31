@@ -30,7 +30,12 @@ def hour_to_hour_12_system(hour_mix):
     hour12 = hour_mix % 12
     return 12 if hour12 == 0 else hour12
 
-for hour in [1, 7, 20, 12, 24]:
+def hour_to_hour_12_system_compact(hour_mix):
+    return hour_mix % 12 or 12 # This works because 0 in '0 or 12' will be evaluated as False. Too much condensed??
+    
+
+for hour in [0, 1, 7, 20, 12, 24]:
     print(f"Original: {hour:>2}, 12 hour system: {hour_to_hour_12_system_verbose(hour):>2}")
     print(f"Original: {hour:>2}, 12 hour system: {hour_to_hour_12_system(hour):>2}")
+    print(f"Original: {hour:>2}, 12 hour system: {hour_to_hour_12_system_compact(hour):>2}")
 
