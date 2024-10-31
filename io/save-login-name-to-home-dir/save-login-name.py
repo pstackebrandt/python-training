@@ -20,29 +20,44 @@ import arrow
 import os
 
 OUT_FILE_NAME = "python-test-file.tmp"
+TIME_FORMAT = "YYYY-MM-DD HH:mm A"
 
-print("Save login name, date and time to tmp file in user home directory")
+# Save login name and curr. time to temp file in user home directory.
+def save_login_to_home_dir(login_name_p, temp_dir_p, out_file_name):
+    current_time = arrow.now().format(TIME_FORMAT)
+    
+    # Create the tmp directory if it doesn't exist
+    os.makedirs(temp_dir_p, exist_ok=True)
 
-login_name = getpass.getuser()
-print(f"login-name: {login_name}")
+    file_path = os.path.join(temp_dir_p, out_file_name)
 
-current_time = arrow.now().format("YYYY-MM-DD HH:MM A")
-print(current_time)
+    # Write login name, date, and time to file
+    with open(file_path, "w") as file:
+        file.write(f"User: {login_name_p}\n")
+        file.write(f"Date and time: {current_time}")
+        
+    return True 
 
-home_dir = os.path.expanduser("~")
-tmp_dir = os.path.join(home_dir, "tmp")
+# returns directory as string
+def get_home_dir_of_current_user():
+    return os.path.expanduser("~")
 
-# Create the tmp directory if it doesn't exist
-os.makedirs(tmp_dir, exist_ok=True)
+# returns directory as string    
+def get_temporary_dir_within_dir(parent_dir):
+    return os.path.join(parent_dir, "tmp")
 
-# Define the file path within the tmp directory
-file_path = os.path.join(tmp_dir, OUT_FILE_NAME)
+def main():
+    print("Save login name, date and time to tmp file in user home directory")
+    
+    home_dir = get_home_dir_of_current_user()
+    temp_dir = get_temporary_dir_within_dir(home_dir)
+    login_name = getpass.getuser() # string
+    
+    save_login_to_home_dir(login_name, temp_dir, OUT_FILE_NAME)
 
-# Write the login name, date, and time to the file
-with open(file_path, "w") as file:
-    file.write(f"User: {login_name}\n")
-    file.write(f"Date and time: {current_time}")
+    print(f"Saved login name {login_name} to {OUT_FILE_NAME}")
+    print(f"see at {temp_dir}")
+    print(f"Date and time: {arrow.now().format(TIME_FORMAT)}")
 
-print(f"Saved login name {login_name} to {OUT_FILE_NAME}")
-print(f"see at {tmp_dir}")
- 
+if __name__ == "__main__":
+    main()
